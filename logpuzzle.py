@@ -38,6 +38,8 @@ def read_urls(filename):
         puzzle_path = re.search(r'\S+(puzzle)\S+', line)
         if puzzle_path:
             puzzles_list.append(url + puzzle_path.group(0))
+    if 'place' in filename:
+        return sorted(set(puzzles_list), key=lambda x: x[(x.rfind('-')+1):])
     return sorted(set(puzzles_list))
 
 
